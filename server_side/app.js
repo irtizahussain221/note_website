@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const bodyParser = require("body-parser");
 
 //using environment variables
 const dotenv = require("dotenv");
@@ -23,6 +24,7 @@ mongoose
 
 const indexRouter = require("./routes/index");
 const foldersRouter = require("./routes/folders");
+const notesRouter = require("./routes/notes");
 
 const app = express();
 
@@ -30,6 +32,7 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/folders", foldersRouter);
+app.use("/notes", notesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -56,3 +60,12 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+//cors
+//list of notes
+//notes_passwords
+//update/delete
+//delete all notes belonging to folder
+//setHeader wala error
+//remove next if we can
+//comments
+//updating name of note
