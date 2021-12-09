@@ -61,6 +61,7 @@ function Folders(props) {
         <span className="sr-only">Loading...</span>
       </div>
     );
+  if (!folders[0]) return <div>No folder present!</div>;
   return (
     <div>
       {folders.map((folder, key) => {
@@ -74,11 +75,10 @@ function Folders(props) {
             >
               {folder.name}
             </p>
-            <p className="col-2">1</p>
-            <div className="col-2">
+            <div className="col-4">
               <FontAwesomeIcon
                 className="hover-item"
-                style={{ color: "green" }}
+                style={{ color: "rgb(204, 201, 201)" }}
                 icon={faTrashAlt}
                 onClick={() => {
                   handleDelete(folder._id);
@@ -88,13 +88,15 @@ function Folders(props) {
           </div>
         );
       })}
-      <FontAwesomeIcon
-        className="hover-item"
-        style={{ color: "green" }}
-        icon={faPlusSquare}
-        onClick={handleShow}
-      />{" "}
-      New Folder
+      <div className="add-folder">
+        <FontAwesomeIcon
+          className="hover-item mb-0"
+          style={{ color: "rgb(204, 201, 201)" }}
+          icon={faPlusSquare}
+          onClick={handleShow}
+        />{" "}
+        New Folder
+      </div>
       <CreateFolderModal
         setUpdated={setUpdated}
         show={show}

@@ -89,7 +89,7 @@ function Notes(props) {
                 <div className="col-6">
                   <FontAwesomeIcon
                     className="hover-item"
-                    style={{ color: "red" }}
+                    style={{ color: "rgb(204, 201, 201)" }}
                     icon={faTrashAlt}
                     onClick={handleDeleteShow}
                   />
@@ -101,7 +101,7 @@ function Notes(props) {
                   />
                   <FontAwesomeIcon
                     className="hover-item ml-2"
-                    style={{ color: "green" }}
+                    style={{ color: "rgb(204, 201, 201)" }}
                     icon={faEdit}
                     onClick={handleUpdateShow}
                   />
@@ -119,13 +119,15 @@ function Notes(props) {
           );
         })
       )}
-      <FontAwesomeIcon
-        className="hover-item"
-        style={{ color: "green" }}
-        icon={faPlusSquare}
-        onClick={handleShow}
-      />{" "}
-      Add a note
+      <div className="add-note">
+        <FontAwesomeIcon
+          className="hover-item"
+          style={{ color: "rgb(204, 201, 201)" }}
+          icon={faPlusSquare}
+          onClick={handleShow}
+        />{" "}
+        Add a note
+      </div>
       <NoteCreateModal
         show={show}
         setUpdated={setUpdated}

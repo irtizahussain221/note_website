@@ -10,19 +10,19 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container m-0">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-3">
+          <div className="col-3 folder-column">
             <Folders setFolderID={setFolderID} />
           </div>
-          <div className="col-4">
+          <div className="col-4 notes-column">
             <Notes
               folderID={folderID}
               setNoteID={setNoteID}
               setPassword={setPassword}
             />
           </div>
-          <div className="col-5">
+          <div className="col text-column">
             <NoteText password={password} noteID={noteID} />
           </div>
         </div>
