@@ -31,7 +31,7 @@ router.post("/getNote", async function (req, res, next) {
       req.body.password,
       note[0].password
     );
-    if (!validPassword) return res.status(400).send("Invalid Password!");
+    if (!validPassword) return res.status(401).send("Invalid Password!");
 
     //if everything is fine, then returning the note
     res.setHeader("Content-Type", "application/json");
@@ -79,7 +79,7 @@ router.put("/updateNotes", async function (req, res, next) {
       req.body.password,
       note[0].password
     );
-    if (!validPassword) return res.status(400).send("Invalid Password!");
+    if (!validPassword) return res.status(401).send("Invalid Password!");
 
     //hashing new password
     let { password } = req.body;

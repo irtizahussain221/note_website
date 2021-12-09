@@ -8,7 +8,7 @@ const {
 
 router.get("/getFolders", async function (req, res, next) {
   try {
-    let folders = await Folder.find().populate("notes");
+    let folders = await Folder.find();
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     res.json(folders);
