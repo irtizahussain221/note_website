@@ -17,9 +17,12 @@ function NoteDeleteModal(props) {
 
   async function deleteNote() {
     try {
-      await axios.delete("http://localhost:3000/notes/deleteNotes", {
-        data: { password, _id: props._id },
-      });
+      await axios.delete(
+        "https://demo-notes-website.herokuapp.com/notes/deleteNotes",
+        {
+          data: { password, _id: props._id },
+        }
+      );
       props.setUpdated(true);
     } catch (error) {
       alert("An error occured! Please try again");

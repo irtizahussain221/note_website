@@ -15,7 +15,7 @@ function CreateFolderModal(props) {
     try {
       const body = { name: name };
       let result = await axios.post(
-        "http://localhost:3000/folders/createFolder",
+        "https://demo-notes-website.herokuapp.com/folders/createFolder",
         body
       );
       props.setUpdated(true);

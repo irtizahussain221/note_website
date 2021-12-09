@@ -21,7 +21,7 @@ function NoteText(props) {
     try {
       setLoading(true);
       let response = await axios.post(
-        "http://localhost:3000/notes/getNote",
+        "https://demo-notes-website.herokuapp.com/notes/getNote",
         data
       );
       setNote(response.data);

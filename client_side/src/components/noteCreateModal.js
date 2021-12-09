@@ -26,7 +26,7 @@ function NoteCreateModal(props) {
     };
     try {
       let result = await axios.post(
-        "http://localhost:3000/notes/createNotes",
+        "https://demo-notes-website.herokuapp.com/notes/createNotes",
         data
       );
       console.log(result);

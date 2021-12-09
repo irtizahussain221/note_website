@@ -36,7 +36,7 @@ function Notes(props) {
       setLoading(true);
       try {
         let data = await axios.get(
-          `http://localhost:3000/notes/${props.folderID}/notesList`
+          `https://demo-notes-website.herokuapp.com/notes/${props.folderID}/notesList`
         );
         setLoading(false);
         setError(false);
@@ -76,7 +76,7 @@ function Notes(props) {
             <div key={key}>
               <div className="row m-1">
                 <div
-                  className="col-12"
+                  className="col-12 link"
                   onClick={() => {
                     let password = prompt("Type the password for this note");
                     props.setNoteID(note._id);

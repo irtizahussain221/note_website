@@ -10,6 +10,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 
+const pathToReact = __dirname + "/views";
+
 //connecting to database
 const mongoose = require("mongoose");
 mongoose
@@ -30,8 +32,7 @@ const notesRouter = require("./routes/notes");
 const app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+app.use(express.static(pathToReact));
 
 app.use(cors());
 app.use(logger("dev"));
@@ -42,6 +43,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/folders", foldersRouter);
 app.use("/notes", notesRouter);
+
+//Serving frontend react from express server
+app.get("/*", (_req, res) => {
+  res.sendFile(path + "/index.html");
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -60,12 +66,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-//cors
-//list of notes
-//notes_passwords
-//update/delete
-//delete all notes belonging to folder
-//setHeader wala error
-//remove next if we can
-//comments
-//updating name of note

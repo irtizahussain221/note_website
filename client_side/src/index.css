@@ -45,3 +45,9 @@ code {
   position: absolute;
   bottom: 0;
 }
+
+.link:hover {
+  font-size: 1.25em;
+  text-decoration: underline;
+  cursor: pointer;
+}

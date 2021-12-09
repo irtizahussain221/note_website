@@ -18,7 +18,7 @@ function Folders(props) {
   const handleDelete = async (_id) => {
     try {
       let result = await axios.delete(
-        "http://localhost:3000/folders/deleteFolder",
+        "https://demo-notes-website.herokuapp.com/folders/deleteFolder",
         {
           data: {
             _id,
@@ -34,7 +34,9 @@ function Folders(props) {
 
   useEffect(async () => {
     try {
-      let result = await fetch("http://localhost:3000/folders/getFolders");
+      let result = await fetch(
+        "https://demo-notes-website.herokuapp.com/folders/getFolders"
+      );
       let data = await result.json();
       setLoading(false);
       setFolders(data);
@@ -61,14 +63,33 @@ function Folders(props) {
         <span className="sr-only">Loading...</span>
       </div>
     );
-  if (!folders[0]) return <div>No folder present!</div>;
+  if (!folders[0])
+    return (
+      <div>
+        No folder present!
+        <div className="add-folder">
+          <FontAwesomeIcon
+            className="hover-item mb-0"
+            style={{ color: "rgb(204, 201, 201)" }}
+            icon={faPlusSquare}
+            onClick={handleShow}
+          />{" "}
+          New Folder
+        </div>
+        <CreateFolderModal
+          setUpdated={setUpdated}
+          show={show}
+          handleShow={handleShow}
+        />
+      </div>
+    );
   return (
     <div>
       {folders.map((folder, key) => {
         return (
           <div key={key} className="row">
             <p
-              className="col-8"
+              className="col-8 link"
               onClick={() => {
                 props.setFolderID(folder._id);
               }}

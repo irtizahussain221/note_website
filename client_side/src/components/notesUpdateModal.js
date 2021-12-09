@@ -29,7 +29,10 @@ function NotesUpdateModal(props) {
       folder: props.folder,
     };
     try {
-      await axios.put("http://localhost:3000/notes/updateNotes", data);
+      await axios.put(
+        "https://demo-notes-website.herokuapp.com/notes/updateNotes",
+        data
+      );
       props.setUpdated(true);
     } catch (error) {
       if (error.message === "Request failed with status code 401")
